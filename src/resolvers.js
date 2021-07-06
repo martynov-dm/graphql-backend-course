@@ -1,4 +1,10 @@
-import { getBooks, getBookById, saveBook } from "./model";
+import {
+  getBooks,
+  getBookById,
+  saveBook,
+  removeBook,
+  updateBook,
+} from "./model";
 
 export const resolvers = {
   Query: {
@@ -6,6 +12,8 @@ export const resolvers = {
     book: (_, { id }) => getBookById(id),
   },
   Mutation: {
-    addBook: (_, { id, title, author }) => saveBook(title, id, author),
+    addBook: (_, { book }) => saveBook(book),
+    removeBook: (_, { id }) => removeBook(id),
+    updateBook: (_, { id, book }) => updateBook(id, book),
   },
 };

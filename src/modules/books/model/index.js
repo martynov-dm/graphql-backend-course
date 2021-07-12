@@ -1,23 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-
-const initialDB = [
-  [
-    "ID-1",
-    {
-      title: "Harry Potter",
-      author: "J.K. Rowling",
-    },
-  ],
-  [
-    "ID-2",
-    {
-      title: "Jurrassic Park",
-      author: "Michael Jackson",
-    },
-  ],
-];
-
-const booksDb = new Map(initialDB);
+import { booksDb } from "./db";
 
 export const getBooks = () => {
   const books = [];
@@ -25,7 +7,11 @@ export const getBooks = () => {
   return books;
 };
 
-export const getBookById = (id) => ({ id, ...booksDb.get(id) });
+export const getBookById = (id) => {
+  const book = booksDb.get(id);
+  if (!book) throw new Error(`No book with id ${id}`);
+  return { id, ...booksDb.get(id) };
+};
 
 export const saveBook = (book) => {
   const id = uuidv4();

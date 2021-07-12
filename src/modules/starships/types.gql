@@ -1,0 +1,18 @@
+type Starship {
+   name: String
+    model: String
+    passangers: Int
+    MGLT: String
+    crew: Int
+    manufacturer: String
+}
+
+input BookInput {
+    title: String!
+    author: String!
+}
+
+input UpdateBookInput {
+    title: String
+    author: String
+}

@@ -1,12 +1,10 @@
-type Book {
-  id: ID!
-  title: String!
-  author: String!
-}
+#import "./modules/books/types.gql"
+#import "./modules/starships/types.gql"
 
 type Query {
   books: [Book!]!
   book(id: ID!): Book
+  starships: [Starship!]!
 }
 
 type Mutation {
@@ -15,12 +13,3 @@ type Mutation {
   updateBook(id: ID!, book: UpdateBookInput!): Book
 }
 
-input BookInput {
-  title: String!
-  author: String!
-}
-
-input UpdateBookInput {
-  title: String
-  author: String
-}
